@@ -7,6 +7,7 @@ public class BeaverLogic extends RobotLogic {
 	private RobotController myController;
 	
 	private boolean miner;
+	private final int ATTACKPORT = 0;
 	
 	public BeaverLogic(RobotController controller)
 	{
@@ -19,8 +20,9 @@ public class BeaverLogic extends RobotLogic {
 	public void run()
 	{
 		try {
+			//for beavers, what if we change this to a, if under attack, fight back, else go mine/build
 			attack();
-			MapLocation tower = myController.senseTowerLocations()[0];
+			/*MapLocation tower = myController.senseTowerLocations()[0];
 			if (tower.distanceSquaredTo(myController.getLocation()) > 10)
 			{
 				Movement.moveToward(myController, tower);
@@ -31,7 +33,8 @@ public class BeaverLogic extends RobotLogic {
 				{
 					
 				}
-			}
+			}*/
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -86,5 +89,23 @@ public class BeaverLogic extends RobotLogic {
 				}
 			}
 		}
+	}
+	
+	public MapLocation getAttTarget(){
+		int msg;
+		try {
+			msg = myController.readBroadcast(ATTACKPORT);
+		} catch (GameActionException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			msg = 0;
+		}
+		int x = msg/1000;
+		int y = (msg-x*1000);
+		return new MapLocation(x,y);		
+	}
+	
+	public void move(MapLocation target){
+		
 	}
 }
