@@ -20,9 +20,9 @@ public class RobotPlayer
 		RobotType myType = controller.getType();
 		
 		/*
-		 * Initialize logic to suppress error.
+		 * The robot logic is unit type specific.
 		 */
-		RobotLogic myLogic = new RobotLogic();
+		Robot myLogic;
 		
 		/*
 		 * Initialize logic based on unit type.
@@ -30,26 +30,34 @@ public class RobotPlayer
 		switch(myType)
 		{
 			case AEROSPACELAB:
+				myLogic = new AerospaceLab(controller);
 				break;
 			case BARRACKS:
+				myLogic = new Barracks(controller);
 				break;
 			case BASHER:
+				myLogic = new Basher(controller);
 				break;
 			case BEAVER:
-				myLogic = new BeaverLogic(controller);
+				myLogic = new Beaver(controller);
 				break;
 			case COMMANDER:
+				myLogic = new Commander(controller);
 				break;
 			case COMPUTER:
+				myLogic = new Computer(controller);
 				break;
 			case DRONE:
+				myLogic = new Drone(controller);
 				break;
 			case HANDWASHSTATION:
+				myLogic = new HandwashingStation(controller);
 				break;
 			case HELIPAD:
+				myLogic = new Helipad(controller);
 				break;
 			case HQ:
-				myLogic = new HQLogic(controller);
+				myLogic = new HQ(controller);
 				break;
 			case LAUNCHER:
 				break;
@@ -70,9 +78,11 @@ public class RobotPlayer
 			case TECHNOLOGYINSTITUTE:
 				break;
 			case TOWER:
-				myLogic = new TowerLogic(controller);
 				break;
 			case TRAININGFIELD:
+				break;
+			default:
+				myLogic = new Robot(controller);
 				break;
 		}
 		
