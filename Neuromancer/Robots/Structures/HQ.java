@@ -16,8 +16,8 @@ public class HQ extends Robot {
 	
 	public void run() {
 		try {
-			Actions.attack(mc);
-			Actions.spawn(mc, RobotType.BEAVER);
+			boolean attacked = Actions.attack(mc);
+			boolean spawned = Actions.spawn(mc, RobotType.BEAVER);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
