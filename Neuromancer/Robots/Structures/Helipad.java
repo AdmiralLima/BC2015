@@ -1,5 +1,6 @@
-package Neuromancer;
+package Neuromancer.Robots.Structures;
 
+import Neuromancer.Robots.Robot;
 import battlecode.common.*;
 
 public class Helipad extends Robot {
