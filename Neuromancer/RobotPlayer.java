@@ -1,5 +1,27 @@
 package Neuromancer;
 
+import Neuromancer.Robots.Robot;
+import Neuromancer.Robots.Structures.AerospaceLab;
+import Neuromancer.Robots.Structures.Barracks;
+import Neuromancer.Robots.Structures.HQ;
+import Neuromancer.Robots.Structures.HandwashingStation;
+import Neuromancer.Robots.Structures.Helipad;
+import Neuromancer.Robots.Structures.MinerFactory;
+import Neuromancer.Robots.Structures.SupplyDepot;
+import Neuromancer.Robots.Structures.TankFactory;
+import Neuromancer.Robots.Structures.TechnologyInstitute;
+import Neuromancer.Robots.Structures.Tower;
+import Neuromancer.Robots.Structures.TrainingField;
+import Neuromancer.Robots.Units.Basher;
+import Neuromancer.Robots.Units.Beaver;
+import Neuromancer.Robots.Units.Commander;
+import Neuromancer.Robots.Units.Computer;
+import Neuromancer.Robots.Units.Drone;
+import Neuromancer.Robots.Units.Launcher;
+import Neuromancer.Robots.Units.Miner;
+import Neuromancer.Robots.Units.Missile;
+import Neuromancer.Robots.Units.Soldier;
+import Neuromancer.Robots.Units.Tank;
 import battlecode.common.*;
 
 /*
@@ -60,26 +82,37 @@ public class RobotPlayer
 				myLogic = new HQ(controller);
 				break;
 			case LAUNCHER:
+				myLogic = new Launcher(controller);
 				break;
 			case MINER:
+				myLogic = new Miner(controller);
 				break;
 			case MINERFACTORY:
+				myLogic = new MinerFactory(controller);
 				break;
 			case MISSILE:
+				myLogic = new Missile(controller);
 				break;
 			case SOLDIER:
+				myLogic = new Soldier(controller);
 				break;
 			case SUPPLYDEPOT:
+				myLogic = new SupplyDepot(controller);
 				break;
 			case TANK:
+				myLogic = new Tank(controller);
 				break;
 			case TANKFACTORY:
+				myLogic = new TankFactory(controller);
 				break;
 			case TECHNOLOGYINSTITUTE:
+				myLogic = new TechnologyInstitute(controller);
 				break;
 			case TOWER:
+				myLogic = new Tower(controller);
 				break;
 			case TRAININGFIELD:
+				myLogic = new TrainingField(controller);
 				break;
 			default:
 				myLogic = new Robot(controller);
@@ -87,7 +120,7 @@ public class RobotPlayer
 		}
 		
 		/*
-		 * Run unit logic for the duration of the game.
+		 * Run unit logic for the duration of its life.
 		 */
 		while(true)
 		{
