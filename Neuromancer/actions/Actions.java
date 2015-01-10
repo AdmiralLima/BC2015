@@ -43,5 +43,33 @@ public class Actions {
 			}
 		}
 	}
+	
+	public static boolean attack(RobotController controller, RobotType type) throws GameActionException
+	{
+		if (controller.isWeaponReady())
+		{
+			RobotInfo[] enemies = controller.senseNearbyRobots(type.attackRadiusSquared, controller.getTeam().opponent());
+			RobotInfo bestEnemy = null;
+			double bestHealth = 1.1;
+			for (RobotInfo enemy : enemies)
+			{
+				double enemyHealth = enemy.health / enemy.type.maxHealth;
+				if (enemyHealth < bestHealth)
+				{
+					bestEnemy = enemy;
+					bestHealth = enemyHealth;
+				}
+			}
+			if (bestEnemy != null)
+			{
+				if(controller.canAttackLocation(bestEnemy.location))
+				{
+					controller.attackLocation(bestEnemy.location);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 }

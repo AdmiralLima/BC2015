@@ -1,7 +1,7 @@
 package Neuromancer;
 
-import battlecode.common.Direction;
-import battlecode.common.RobotType;
+import battlecode.common.*;
+import java.util.HashMap;
 
 public class Utils {
 
@@ -17,10 +17,11 @@ public class Utils {
 									 Direction.WEST, 
 									 Direction.NORTH_WEST};
 	
+	
 	/*
 	 * This is the attack preference for all units.
 	 */
-	public RobotType[] attackPreference = {RobotType.HQ, 
+	public static  RobotType[] attackPreference = {RobotType.HQ, 
 			  RobotType.TOWER, 
 			  RobotType.MISSILE,
 			  RobotType.TANK,

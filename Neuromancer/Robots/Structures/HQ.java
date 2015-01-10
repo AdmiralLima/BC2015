@@ -23,6 +23,4 @@ public class HQ extends Robot {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }
