@@ -5,9 +5,12 @@ import battlecode.common.*;
 
 public class HQ extends Robot
 {
+	private int turn;
+	
 	public HQ(RobotController myController)
 	{
 		super(myController);
+		turn = 1;
 	}
 	
 	public void run()
@@ -31,6 +34,11 @@ public class HQ extends Robot
 				}
 			}
 			supply();
+			turn++;
+			if(turn > 1800)
+			{
+				controller.broadcast(0, 1);
+			}
 		} 
 		catch (Exception e) 
 		{

@@ -14,22 +14,16 @@ public class Drone extends Robot {
 		try {
 			if(!attack())
 			{
-				RobotInfo[] friends = controller.senseNearbyRobots(10000, controller.getTeam());
-				int friendCount = 0;
-				for (RobotInfo friend : friends)
+				if (controller.readBroadcast(0) != 1)
 				{
-					if (friend.type == RobotType.DRONE)
+					if (controller.getSupplyLevel() < 50)
 					{
-						friendCount++;
+						moveToward(controller.senseHQLocation());
 					}
-				}
-				if (controller.getSupplyLevel() < 50)
-				{
-					moveToward(controller.senseHQLocation());
-				}
-				else if (friendCount < 30)
-				{
-					moveToward(controller.senseTowerLocations()[0]);
+					else
+					{
+						moveToward(controller.senseTowerLocations()[0]);
+					}
 				}
 				else
 				{
@@ -47,6 +41,10 @@ public class Drone extends Robot {
 					if (bestTower != null)
 					{
 						moveToward(bestTower);
+					}
+					else
+					{
+						moveToward(controller.senseEnemyHQLocation());
 					}
 				}
 			}
